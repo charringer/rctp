@@ -173,12 +173,12 @@ class perm:
                         imap = plist[j][imap]
                     self.p[i] = imap
         else:
-            print "__init__() error: undefined type, returning identity."
+            print("__init__() error: undefined type, returning identity.")
             self.size = 0
             self.p    = []
  
         if not self.IsPermutation():
-            print "__init__() error: invalid permutation."
+            print("__init__() error: invalid permutation.")
             self.size = 0
             self.p    = []
         return
@@ -216,7 +216,7 @@ class perm:
         r      = perm()
  
         if perm.PERM_BASE != minelt:
-            print "perm.FromImage() error: not a valid image array!"
+            print("perm.FromImage() error: not a valid image array!")
             return r
  
         if minelt == 1:
@@ -282,8 +282,8 @@ class perm:
  
         size   = max(self.size, other.size)
         result = self.Identity(size)
-        # print "size   = ", size
-        # print "result = ", result
+        # print("size   = ", size)
+        # print("result = ", result)
         r = result.p
  
         if perm.EVAL_ORDER == 0:  # right to left
@@ -304,7 +304,7 @@ class perm:
         if seq.IsSequence(other):
             return [self[i] for i in other]
  
-        print "__rxor__() error: undefined type."
+        print("__rxor__() error: undefined type.")
         return None
  
     def __div__(self, other):
@@ -355,7 +355,7 @@ class perm:
  
         Returns the image of i under permutation.
         """
-        # print "@@@ size = ", self.size, ",self.size = ", i
+        # print("@@@ size = ", self.size, ",self.size = ", i)
         if i >= perm.PERM_BASE and i < self.size:
             return self.p[i]
         else:
@@ -397,7 +397,7 @@ class perm:
         elif type(q) == type(1):
             return self.IntPow(q)
  
-        print "Error: unimplemented xor argument type."
+        print("Error: unimplemented xor argument type.")
         return self.Identity()
  
     def IntPow(self, n):
@@ -407,7 +407,7 @@ class perm:
         """
         t = self.Identity()
         if type(n) != type(1):
-            print "perm.IntPow() error: expected an integer."
+            print("perm.IntPow() error: expected an integer.")
             return t
  
         if n == 0:
@@ -639,45 +639,45 @@ class perm:
         points = []
         for i in range(perm.PERM_BASE, degree + 1):
             if self[i] == i:
-                # print "fixed i = ", i, "self.size = ", self.size
+                # print("fixed i = ", i, "self.size = ", self.size)
                 points.append(i)
         return points
  
  
 def Test():
-    print "TestPerm() Version 0.1.1"
+    print("TestPerm() Version 0.1.1")
  
-    print "Permutations are specified in cycle notation."
+    print("Permutations are specified in cycle notation.")
     p = perm((1,2,3,4))
-    print "  A single cycle: p = perm([1,2,3,4]) = ", p
+    print("  A single cycle: p = perm([1,2,3,4]) = ", p)
  
     r = perm(1,2,3,4)
-    print "Or you can write: r = perm(1,2,3,4) = ", r
+    print("Or you can write: r = perm(1,2,3,4) = ", r)
  
     q = perm((1,2), (3,4))
-    print "      Two cycles: q = perm((1,2), (3,4)) = ", q
-    print "The cycles are NOT checked for disjointness. So transpositions"
-    print "can also be inputted."
-    print
-    print "Some operations and functions available for permutation objects"
-    print "       Identity permutation: p.Identity()     =", p.Identity()
-    print "            A separate copy: p.Copy()         =", p.Copy()
-    print "   Inverse of a permutation: p.Inverse()      =", p.Inverse().Cycles()
-    print "Product of two permutations: p * q            =", (p * q).Cycles()
-    print " Conjugate of a permutation: p ^ q            =", p ^ q
-    print "     Order of a permutation: p.Order()        =", p.Order()
-    print "        Set of moved points: p.MovedPoints()  =", p.MovedPoints()
-    print "        Set of fixed points: p.Fix()          =", p.Fix(4)
-    print "     Number of moved points: p.NrMovedPoints()=", p.NrMovedPoints()
-    print "    Number of fixed points: p.NrFixedPoints(4)=", p.NrFixedPoints(4)
-    print "you have to specify the index of permutation 4."
-    print "           Image of a point: p.Image(3)       =", p.Image(3)
-    print "                      or as: 3^p              =", 3^p
-    print "          Image of a vector: [1,2,3,4] ^ p    =", [1,2,3,4]^p
-    print "            Image of points: p.Image([0,2,3]) =", p.Image([0,2,3])
+    print("      Two cycles: q = perm((1,2), (3,4)) = ", q)
+    print("The cycles are NOT checked for disjointness. So transpositions")
+    print("can also be inputted.")
+    print()
+    print("Some operations and functions available for permutation objects")
+    print("       Identity permutation: p.Identity()     =", p.Identity())
+    print("            A separate copy: p.Copy()         =", p.Copy())
+    print("   Inverse of a permutation: p.Inverse()      =", p.Inverse().Cycles())
+    print("Product of two permutations: p * q            =", (p * q).Cycles())
+    print(" Conjugate of a permutation: p ^ q            =", p ^ q)
+    print("     Order of a permutation: p.Order()        =", p.Order())
+    print("        Set of moved points: p.MovedPoints()  =", p.MovedPoints())
+    print("        Set of fixed points: p.Fix()          =", p.Fix(4))
+    print("     Number of moved points: p.NrMovedPoints()=", p.NrMovedPoints())
+    print("    Number of fixed points: p.NrFixedPoints(4)=", p.NrFixedPoints(4))
+    print("you have to specify the index of permutation 4.")
+    print("           Image of a point: p.Image(3)       =", p.Image(3))
+    print("                      or as: 3^p              =", 3^p)
+    print("          Image of a vector: [1,2,3,4] ^ p    =", [1,2,3,4]^p)
+    print("            Image of points: p.Image([0,2,3]) =", p.Image([0,2,3]))
  
-    print "               Cycle counts: p.CycleCounts()  =", p.CycleCounts()
-    print "Done !"
+    print("               Cycle counts: p.CycleCounts()  =", p.CycleCounts())
+    print("Done !")
  
 if __name__ == "__main__":
     Test()
