@@ -49,14 +49,17 @@ class Test(unittest.TestCase):
 
     def test_IsAllIntegers(self):
         self.assertTrue(sequence.IsAllIntegers((1,2,3)))
+        self.assertFalse(sequence.IsAllIntegers((1,'3')))
 
     def test_IsAllSequences(self):
         self.assertTrue(sequence.IsAllSequences(((1,2,3),(4,5))))
         self.assertTrue(sequence.IsAllSequences([[1,4],[2,5,3]]))
+        self.assertFalse(sequence.IsAllSequences([[12,3],4]))
 
     def test_IsSequence(self):
         self.assertTrue(sequence.IsSequence((1,2,3)))
         self.assertTrue(sequence.IsSequence([4,5]))
+        self.assertFalse(sequence.IsSequence(999))
 
 
 if __name__ == '__main__':
