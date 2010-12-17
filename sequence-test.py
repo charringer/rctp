@@ -5,10 +5,12 @@ class Test(unittest.TestCase):
     def test_MinElt(self):
         self.assertEqual(1, sequence.MinElt([1,3,4,2]))
         self.assertEqual(1, sequence.MinElt((9,1,2,5)))
+        self.assertEqual(1, sequence.MinElt(([9,1],[2,5])))
 
     def test_MaxElt(self):
         self.assertEqual(4, sequence.MaxElt([1,3,4,2]))
         self.assertEqual(9, sequence.MaxElt((9,1,2,5)))
+        self.assertEqual(9, sequence.MaxElt(([9,1],[2,5])))
 
     def test_IsAllIntegers(self):
         self.assertTrue(sequence.IsAllIntegers((1,2,3)))

@@ -22,17 +22,25 @@ def IsAllIntegers(obj):
     return True
 
 def MaxElt(obj):
-    curmax = obj[0]
+    curmax = None
     for elem in obj:
-        if elem > curmax:
-            curmax = elem
+        if IsSequence(elem):
+            value = MaxElt(elem)
+        else:
+            value = elem
+        if curmax == None or value > curmax:
+            curmax = value
     return curmax
 
 def MinElt(obj):
-    curmin = obj[0]
+    curmin = None
     for elem in obj:
-        if elem < curmin:
-            curmin = elem
+        if IsSequence(elem):
+            value = MinElt(elem)
+        else:
+            value = elem
+        if curmin == None or value < curmin:
+            curmin = value
     return curmin
 
 
