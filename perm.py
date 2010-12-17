@@ -70,7 +70,6 @@ Citation: "http://www.adorio-research.org:8003/downloads/perm.py").
  
 """
 import sequence as seq
-from   mathutils import *
  
  
 RIGHT_TO_LEFT_EVAL_ORDER = 0
