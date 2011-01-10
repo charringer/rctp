@@ -23,6 +23,9 @@ class Test(unittest.TestCase):
     def test_lcm_handles_list(self):
         self.assertEqual(6, mathutils.lcm([6]))
         self.assertEqual(2*3*5, mathutils.lcm([2*3, -3, 3*5]))
+    def test_lcm_type_is_int(self):
+        self.assertEqual(int, type(mathutils.lcm([6])))
+        self.assertEqual(int, type(mathutils.lcm([2*3, -3, 3*5])))
 
 if __name__ == '__main__':
     unittest.main()

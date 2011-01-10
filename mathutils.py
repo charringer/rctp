@@ -13,7 +13,7 @@ def lcm(a,b=None):
     if a == 0 or b == 0:
         return 0
     else:
-        return abs(a*b)/gcd(a,b)
+        return abs(a*b)//gcd(a,b)
 
 def gcd(a,b=None):
     """
